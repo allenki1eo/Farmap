@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "files-mentioned-by-the-user-logo",
-    "slug": "files-mentioned-by-the-user-logo",
+    "name": "KilimoScope AI",
+    "slug": "kilimoscope-ai",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F7F3E8"
     },
     "ios": {
       "supportsTablet": true
@@ -18,13 +18,17 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#1F5E3B"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/kilimoscope-logo.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite"
+    ]
   }
 }
