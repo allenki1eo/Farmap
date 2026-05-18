@@ -8,22 +8,69 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.muted,
+        tabBarInactiveTintColor: "#9BABA0",
         tabBarStyle: {
           backgroundColor: colors.white,
           borderTopColor: colors.line,
-          height: 72,
+          borderTopWidth: 1,
+          height: 76,
           paddingTop: 8,
+          paddingBottom: 10,
+          shadowColor: "#17231A",
+          shadowOffset: { width: 0, height: -4 },
+          shadowOpacity: 0.06,
+          shadowRadius: 12,
+          elevation: 8,
         },
-        tabBarLabelStyle: { fontWeight: "800", fontSize: 11 },
+        tabBarLabelStyle: { fontWeight: "800", fontSize: 11, marginTop: 2 },
+        tabBarItemStyle: { gap: 2 },
       }}
     >
-      <Tabs.Screen name="home" options={{ title: "Home", tabBarIcon: ({ color }) => <Home stroke={color} size={22} /> }} />
-      <Tabs.Screen name="map" options={{ title: "Map", tabBarIcon: ({ color }) => <Map stroke={color} size={22} /> }} />
-      <Tabs.Screen name="crops" options={{ title: "Crops", tabBarIcon: ({ color }) => <Sprout stroke={color} size={22} /> }} />
-      <Tabs.Screen name="ask-ai" options={{ title: "Ask AI", tabBarIcon: ({ color }) => <Bot stroke={color} size={22} /> }} />
-      <Tabs.Screen name="saved" options={{ title: "Saved", tabBarIcon: ({ color }) => <Bookmark stroke={color} size={22} /> }} />
+      <Tabs.Screen
+        name="home"
+        options={{
+          title: "Home",
+          tabBarIcon: ({ color, focused }) => (
+            <Home stroke={color} size={22} fill={focused ? `${colors.primary}20` : "transparent"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="map"
+        options={{
+          title: "Map",
+          tabBarIcon: ({ color, focused }) => (
+            <Map stroke={color} size={22} fill={focused ? `${colors.primary}20` : "transparent"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="crops"
+        options={{
+          title: "Crops",
+          tabBarIcon: ({ color, focused }) => (
+            <Sprout stroke={color} size={22} fill={focused ? `${colors.primary}20` : "transparent"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="ask-ai"
+        options={{
+          title: "Ask AI",
+          tabBarIcon: ({ color, focused }) => (
+            <Bot stroke={color} size={22} fill={focused ? `${colors.primary}20` : "transparent"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="saved"
+        options={{
+          title: "Saved",
+          tabBarIcon: ({ color, focused }) => (
+            <Bookmark stroke={color} size={22} fill={focused ? `${colors.primary}20` : "transparent"} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
-
