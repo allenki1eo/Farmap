@@ -36,7 +36,8 @@ export default function MapScreen() {
       )
     : regions;
 
-  const current = selected ?? regions[0];
+  const inFiltered = selected && filtered.some((r) => r.id === selected.id);
+  const current = (inFiltered ? selected : undefined) ?? filtered[0] ?? regions[0];
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>

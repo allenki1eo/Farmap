@@ -148,6 +148,13 @@ window.updateMap=function(data){
     currentLayer=data.layer;
     buildMarkers();
   }
+  else if(data.type==='setRegions'){
+    REGIONS=data.regions;
+    if(selectedId&&!REGIONS.find(function(r){return r.id===selectedId;})){
+      selectedId=null;
+    }
+    buildMarkers();
+  }
 };
 
 // Listen for messages injected via injectJavaScript wrapper
@@ -207,6 +214,30 @@ export function LeafletMap({ regions, selectedRegion, layer, onRegionSelect, sty
       inject({ type: "setLayer", layer });
     }
   }, [layer, inject]);
+
+  const prevRegionIds = useRef<string>("");
+  useEffect(() => {
+    if (!isReady.current) return;
+    const ids = regionsWithCoords.map((r) => r.id).join(",");
+    if (ids !== prevRegionIds.current) {
+      prevRegionIds.current = ids;
+      inject({
+        type: "setRegions",
+        regions: regionsWithCoords.map((r) => ({
+          id: r.id,
+          name: r.name,
+          lat: r.lat,
+          lng: r.lng,
+          climateType: r.climateType,
+          droughtRisk: r.droughtRisk,
+          topCrops: r.topCrops,
+          confidence: r.confidence,
+          annualRainfall: r.annualRainfall,
+          avgTemperature: r.avgTemperature,
+        })),
+      });
+    }
+  }, [regionsWithCoords, inject]);
 
   const handleMessage = useCallback(
     (event: { nativeEvent: { data: string } }) => {
